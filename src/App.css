@@ -69,10 +69,33 @@
 
 .search-line {
   display: flex;
+  flex-direction: row;
   align-items: center;
 }
 
 .bar-finder {
+  margin:auto;
   margin-top: 7%;
   width: 50%;
+  height: 35px;
+}
+
+.Weather-Info {
+  margin: auto;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.weather-op{
+  width: 15%;
+  height: 275px;
+  background-color:#beced3;
+  border-radius: 20px;
+  text-align: center;
+  margin: 0.5%;
+  margin-top: 7.5%;
+  color: aliceblue;
 }
