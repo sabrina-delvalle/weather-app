@@ -36,3 +36,43 @@
     transform: rotate(360deg);
   }
 }
+
+
+.logo {
+  font-weight: 600;
+  font-size: 30px;
+  margin: 50px;
+  margin-top: 10px;
+  color: black;
+  text-decoration: none;
+}
+
+.top-bar {
+  margin-top: 20px;
+}
+
+.NavBar {
+  display: flex;
+  display: inline;
+}
+
+.NavElement {
+  margin: 0 3%;
+  text-decoration: none;
+  color: gray;
+}
+
+.search {
+  margin-left: 25%;
+  color: gray;
+}
+
+.search-line {
+  display: flex;
+  align-items: center;
+}
+
+.bar-finder {
+  margin-top: 7%;
+  width: 50%;
+}

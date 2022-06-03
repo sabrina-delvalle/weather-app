@@ -1,7 +1,20 @@
 import React from "react";
 
 function NavBar() {
-  return <div><h1>NavBar23</h1></div>;
+  return <div className="top-bar">   
+            <a className="logo" href="http://localhost:3000">Cloud Garden</a>
+            <nav className="NavBar">
+                <a className="NavElement" href="www.wikipedia.com">Cloud Garden</a>
+                <a className="NavElement" href="www.wikipedia.com">info</a>
+                <a className="NavElement" href="www.wikipedia.com">more</a>
+                <a className="NavElement" href="www.wikipedia.com">about</a>
+            </nav> 
+            <span className="search">
+                <label for="search-bar">search</label>
+                <input name="search" type='text' for="search-bar" placeholder="search"></input>
+            </span>
+        </div>
+
 }
 
 export default NavBar;
