@@ -10,8 +10,8 @@ function NavBar() {
                 <a className="NavElement" href="www.wikipedia.com">about</a>
             </nav> 
             <span className="search">
-                <label for="search-bar">search</label>
-                <input name="search" type='text' for="search-bar" placeholder="search"></input>
+                <label htmlFor="search-bar">search</label>
+                <input name="search" type='text' htmlFor="search-bar" placeholder="search"></input>
             </span>
         </div>
 
