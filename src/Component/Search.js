@@ -1,6 +1,19 @@
-import React from "react";
+import React, {useEffect} from "react";
 
 function Search() {
+
+/*   const keysPressedDown = useRef({}); ADD USE REF!!*/
+
+  useEffect(() => {
+    window.addEventListener("keydown",
+        (event) => {
+            // Enter
+            if (event.key === 13) {
+                /* keysPressedDown.current[event.key] = true; */
+                searchCity();
+            }
+        });
+      }, []);
 
   function searchCity() {
     const city = 'Caracas';
@@ -34,8 +47,7 @@ function Search() {
   }
 
   return <div className="search-line">
-            <input name="search-bar-principal" type='text' placeholder="search" className="bar-finder"></input>
-            <h2>{searchCity()}</h2>
+            <input name="search-bar-principal" type='text' placeholder="search" className="bar-finder" onKeyDown={() => {searchCity()}}></input>
         </div>
 }
 
