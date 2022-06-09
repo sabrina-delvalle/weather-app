@@ -57,7 +57,7 @@
 }
 
 .NavElement {
-  margin: 0 3%;
+  margin: 0 1%;
   text-decoration: none;
   color: gray;
 }
@@ -90,12 +90,13 @@
 }
 
 .weather-op{
-  width: 15%;
-  height: 275px;
-  background-color:#beced3;
+  width: 17.5%;
+  height: 350px;
+  background-color:#8fb3c6;
   border-radius: 20px;
-  text-align: center;
-  margin: 0.5%;
+  margin: 3%;
   margin-top: 7.5%;
-  color: aliceblue;
+  color: rgb(217, 224, 231);
+  padding: 2%;
+  font-family: Arial, Helvetica, sans-serif;
 }
