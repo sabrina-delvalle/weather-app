@@ -22,34 +22,41 @@ class App extends Component {
     } */
 
     state = {        
-      city: '',
-      temp: 5,
-      tempMin: 10,
-      tempMax: 20,
-      pressure: 40,
-      humidity: 50,
-      windSpeed: 70
+      city: 'New York',
+      temp: 0,
+      tempMin: 0,
+      tempMax: 0,
+      pressure: 0,
+      humidity: 0,
+      windSpeed: 0, 
+      coordinates: {lon: 0, lat: 0},
+      weather: ''
     }
 
-    cityOnChange = () => {
-      window.addEventListener("keydown",
-        (event) => {
-            // Enter
-          if (event.key === 'Enter') {
-            //call the function with the city inserted...
-
-          } else {
-            console.log('else!');
-            this.setState = { city: this.state.city + event.key}
-          }
-        })
+    setCityNameState = cityName => {
+      const cityN = cityName.charAt(0).toUpperCase() + cityName.slice(1);
+      this.setState( { city: cityN } );
     }
+
+    setCityValues = (cityValues) => {
+      const weather = {...this.state};
+      //console.log(weather);
+      //console.log('here in cityValues', cityValues);
+      const w2 = {...weather, ...cityValues};
+      console.log(w2);
+      this.setState ( { ...weather, ...cityValues } )
+    }
+
+
 
 render() { 
     return ( 
     <div>     
       <NavBar />
-      <Search citySearch={this.state.city} onCitySelection={this.cityOnChange}/>
+      <Search citySearch={this.state.city}
+              setCity = { this.setCityNameState }
+              setValues = { this.setCityValues }
+      />
       <Weather 
           city={this.state.city}
           temp={this.state.temp}
@@ -57,7 +64,10 @@ render() {
           tempMax={this.state.tempMax}
           pressure={this.state.pressure}
           humidity={this.state.humidity}
-          windSpeed={this.state.windSpeed}/>
+          windSpeed={this.state.windSpeed}
+          coords={this.state.coordinates}
+          sense={this.state.weather}
+          />
     </div>
     );
   }
