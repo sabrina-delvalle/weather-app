@@ -8,19 +8,6 @@ import React, { Component } from 'react';
 
 class App extends Component {
 
-/*   constructor(props) {
-    super(props);
-      this.state = { 
-        city: '',
-        temp: 5,
-        tempMin: 10,
-        tempMax: 20,
-        pressure: 40,
-        humidity: 50,
-        windSpeed: 70
-      }
-    } */
-
     state = {        
       city: 'New York',
       temp: 0,
@@ -30,7 +17,8 @@ class App extends Component {
       humidity: 0,
       windSpeed: 0, 
       coordinates: {lon: 0, lat: 0},
-      weather: ''
+      date: 'Thursday, June 16, 2022 19:58:58',
+      image: 'https://bmcdn.nl/assets/weather-icons/v3.0/line/svg/clear-day.svg'
     }
 
     setCityNameState = cityName => {
@@ -47,6 +35,37 @@ class App extends Component {
       this.setState ( { ...weather, ...cityValues } )
     }
 
+    selectWeather = () => {
+      let lon = (this.state.coordinates.lon).toString(); 
+      let lat = (this.state.coordinates.lat).toString();  
+      const key = 'eeb35e5f10a645cca2cef0764c6e63c6';
+      const url = `https://api.ipgeolocation.io/timezone?apiKey=${key}&lat=${lat}&long=${lon}`;
+      if(this.state.city && this.state.city !=='New York') {
+        fetch(url)  
+          .then(result => result.json())
+          .then(data => { 
+            const weather = { ...this.state };
+            const date = {date: data.date_time_txt};
+
+            console.log(data);
+            console.log(date.date);
+            this.setState( {...weather, ...date} );
+          })
+      }
+      // TOMORROW ADJUST TIME BASED WEATHER - AND A DEFAULT!
+      if(Math.random() < 0.5)
+      return('https://bmcdn.nl/assets/weather-icons/v3.0/line/svg/clear-day.svg');
+      else{
+        return('https://bmcdn.nl/assets/weather-icons/v3.0/line/svg/clear-night.svg')
+      }
+    }
+
+    getDate = (newDate) => {
+      const weather = {...this.state};
+      const w2 = {...weather, ...newDate};
+      console.log(w2);
+      this.setState( {...weather, ...newDate} )
+    }
 
 
 render() { 
@@ -56,6 +75,7 @@ render() {
       <Search citySearch={this.state.city}
               setCity = { this.setCityNameState }
               setValues = { this.setCityValues }
+              dateCity = { this.selectWeather }
       />
       <Weather 
           city={this.state.city}
@@ -65,8 +85,8 @@ render() {
           pressure={this.state.pressure}
           humidity={this.state.humidity}
           windSpeed={this.state.windSpeed}
-          coords={this.state.coordinates}
-          sense={this.state.weather}
+          date={this.state.date}
+          img={this.state.image}
           />
     </div>
     );

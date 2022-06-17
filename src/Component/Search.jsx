@@ -15,6 +15,7 @@ function Search (props) {
         valuesId = { temp: Math.floor(data.main.temp - 273.15), tempMin: Math.floor(data.main.temp_min - 273.15), tempMax: Math.floor(data.main.temp_max - 273.15), pressure: data.main.pressure, humidity: data.main.humidity, windSpeed: data.wind.speed, coordinates: data.coord, weather: data.weather[0].main};
         console.log(data);
         props.setValues(valuesId);
+        props.dateCity();    //coords of city to wait
         city = '';
         return city;
       });
@@ -26,10 +27,13 @@ function Search (props) {
     // console.log(event.key);
     if (event.key === 'Enter') {
       //console.log(cityName);
+
       props.setCity(event.target.value);
+
       searchCity(cityName);
       setCityName ( '' );
       event.target.value = '';
+
     } else if (event.key === 'Backspace') {
       setCityName( cityName.slice(0, cityName.length - 1) );
     } else if (event.key === 'Shift' || event.key === 'Control' || event.key === 'Alt') {
