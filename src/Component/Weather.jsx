@@ -22,8 +22,10 @@ class Weather extends Component {
                 </div>
                 </div>
                 <div className="weather-op2">< br />
-                  <img src={img} alt="weather img"></img>
+                  <img src={img} alt="weather img" className="imgW"></img>
+                  <p className="cityPrint">{temp} ºC</p>
                   <p className="timeW">{date}</p>
+
                 </div>
             </div>;
   }

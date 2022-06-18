@@ -15,7 +15,11 @@ function Search (props) {
         valuesId = { temp: Math.floor(data.main.temp - 273.15), tempMin: Math.floor(data.main.temp_min - 273.15), tempMax: Math.floor(data.main.temp_max - 273.15), pressure: data.main.pressure, humidity: data.main.humidity, windSpeed: data.wind.speed, coordinates: data.coord, weather: data.weather[0].main};
         console.log(data);
         props.setValues(valuesId);
-        props.dateCity();    //coords of city to wait
+                                    //------------------------
+        setTimeout(() => {
+          props.dateCity();    //coords of city to wait
+        }, 300)
+
         city = '';
         return city;
       });
@@ -43,10 +47,10 @@ function Search (props) {
     }
   }
 
-  return <div><div className="search-line"><div></div>
+  return <div className="wrapperC"><div className="search-line"><div></div>
   <input name="search-bar-principal" type='text' placeholder="search here!" className="bar-finder" onKeyDown={handleChange}></input>
   </div>
-  <h2 className="cityPrev">here the city: <span className="cityPrint">{props.citySearch}</span></h2>
+  <h2 className="cityPrev"><span className="cityPrint1">{props.citySearch}</span></h2>
   </div>
 }
 
